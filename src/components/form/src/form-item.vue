@@ -1,10 +1,10 @@
 <template>
-  <div class="i-form-item"></div>
+  <div class="fy-form-item"></div>
 </template>
 
 <script>
 export default {
-
+  name: 'fy-form-item'
 }
 </script>
 

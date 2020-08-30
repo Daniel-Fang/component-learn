@@ -1,24 +1,36 @@
 <template>
   <div class="home">
-    <!-- <i-form :model="formModel" :rules="ruleValidate">
-      <i-form-item label="用户名" prop="name">
+    <fy-form :model="formModel" :rules="ruleValidate">
+      <fy-form-item label="用户名" prop="name">
         
-      </i-form-item>
-      <i-form-item label="邮箱" prop="email">
+      </fy-form-item>
+      <fy-form-item label="邮箱" prop="email">
 
-      </i-form-item>
-    </i-form> -->
+      </fy-form-item>
+    </fy-form>
   </div>
 </template>
 
 <script>
-import iForm from '@/components/form/form.vue';
-import iFormItem from '@/components/form/form-item.vue';
+import FyInput from '@/components/input';
+import FyForm from '@/components/form';
+import FyFormItem from '@/components/form-item';
 export default {
   name: 'Home',
   components: {
-    iForm,
-    iFormItem
+    FyInput,
+    FyForm,
+    FyFormItem
+  },
+  data () {
+    return {
+      name: 'alex'
+    }
+  },
+  watch: {
+    name (val) {
+      console.log(val);
+    }
   }
 }
 </script>
