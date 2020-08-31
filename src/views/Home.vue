@@ -1,11 +1,15 @@
 <template>
   <div class="home">
-    <fy-form :model="formModel" :rules="ruleValidate">
+    <fy-form :model="formModel" :rules="ruleValidate" ref="formRef">
       <fy-form-item label="用户名" prop="name">
-        
+        <fy-input v-model="formModel.name" placeholder="请输入用户名"></fy-input>
       </fy-form-item>
       <fy-form-item label="邮箱" prop="email">
-
+        <fy-input v-model="formModel.email" placeholder="请输入邮箱"></fy-input>
+      </fy-form-item>
+      <fy-form-item>
+        <button @click="handleSubmit">提交</button>
+        <button @click="handleReset">重置</button>
       </fy-form-item>
     </fy-form>
   </div>
@@ -24,12 +28,45 @@ export default {
   },
   data () {
     return {
-      name: 'alex'
+      formModel: {
+        name: '',
+        email: ''
+      },
+      ruleValidate: {
+        name: [
+          {
+            required: true,
+            message: '用户名不能为空',
+            trigger: 'blur'
+          }
+        ],
+        email: [
+          {
+            required: true,
+            message: '邮箱不能为空',
+            trigger: 'blur'
+          },
+          {
+            type: 'email',
+            message: '邮箱格式不正确',
+            trigger: ['change', 'blur']
+          }
+        ]
+      }
     }
   },
-  watch: {
-    name (val) {
-      console.log(val);
+  methods: {
+    handleSubmit () {
+      this.$refs.formRef.validate(valid => {
+        if (valid) {
+          window.alert('提交成功');
+        } else {
+          window.alert('表单验证失败');
+        }
+      });
+    },
+    handleReset () {
+      this.$refs.formRef.resetFields();
     }
   }
 }
