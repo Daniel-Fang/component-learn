@@ -7,6 +7,9 @@
       <fy-form-item label="邮箱" prop="email">
         <fy-input v-model="formModel.email" placeholder="请输入邮箱"></fy-input>
       </fy-form-item>
+      <fy-form-item label="性别" prop="sex">
+        <fy-checkbox v-model="formModel.sex">男</fy-checkbox>
+      </fy-form-item>
       <fy-form-item>
         <button @click="handleSubmit">提交</button>
         <button @click="handleReset">重置</button>
@@ -16,21 +19,24 @@
 </template>
 
 <script>
-import FyInput from '@/components/input';
 import FyForm from '@/components/form';
 import FyFormItem from '@/components/form-item';
+import FyInput from '@/components/input';
+import FyCheckbox from '@/components/checkbox';
 export default {
   name: 'Home',
   components: {
-    FyInput,
     FyForm,
-    FyFormItem
+    FyFormItem,
+    FyInput,
+    FyCheckbox
   },
   data () {
     return {
       formModel: {
         name: '',
-        email: ''
+        email: '',
+        sex: false
       },
       ruleValidate: {
         name: [
@@ -51,8 +57,20 @@ export default {
             message: '邮箱格式不正确',
             trigger: ['change', 'blur']
           }
+        ],
+        sex: [
+          {
+            required: true,
+            message: '性别不能为空',
+            trigger: 'blur'
+          }
         ]
       }
+    }
+  },
+  watch: {
+    'formModel.sex' (val) {
+      console.log(val);
     }
   },
   methods: {

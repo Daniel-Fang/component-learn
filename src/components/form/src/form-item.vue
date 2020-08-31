@@ -42,7 +42,7 @@ export default {
     getRules () {
       let formRules = this.form.rules;
       formRules = formRules ? formRules[this.prop] : [];
-      return [...formRules];
+      return [].concat(formRules);
     },
     getFilteredRule (trigger) {
       const rules = this.getRules();
