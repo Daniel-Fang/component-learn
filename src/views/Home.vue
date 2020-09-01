@@ -15,6 +15,7 @@
         <button @click="handleReset">重置</button>
       </fy-form-item>
     </fy-form>
+
   </div>
 </template>
 
@@ -29,7 +30,7 @@ export default {
     FyForm,
     FyFormItem,
     FyInput,
-    FyCheckbox
+    FyCheckbox,
   },
   data () {
     return {
@@ -75,13 +76,10 @@ export default {
   },
   methods: {
     handleSubmit () {
-      this.$refs.formRef.validate(valid => {
-        if (valid) {
-          window.alert('提交成功');
-        } else {
-          window.alert('表单验证失败');
-        }
-      });
+      this.$Alert.info({
+        content: '这是一条提示信息',
+        duration: 2
+      })
     },
     handleReset () {
       this.$refs.formRef.resetFields();
