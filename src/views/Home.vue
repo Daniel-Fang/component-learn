@@ -15,7 +15,6 @@
         <button @click="handleReset">重置</button>
       </fy-form-item>
     </fy-form>
-
   </div>
 </template>
 

@@ -24,10 +24,10 @@ export default {
   methods: {
     handleInput (e) {
       this.$emit('input', e.target.value);
-      this.dispatch('fy-form-item', 'on-form-change', e.target.value);
+      // this.dispatch('fy-form-item', 'on-form-change', e.target.value);
     },
     handleBlur (e) {
-      this.dispatch('fy-form-item', 'on-form-blur', e.target.value)
+      // this.dispatch('fy-form-item', 'on-form-blur', e.target.value)
     }
   }
 }
