@@ -4,22 +4,24 @@ import FyInput from '@/components/input/index';
 jest.useFakeTimers();
 
 describe('FyInput.vue', () => {
-  it('it should support v-model binding', async () => {
+  test('test v-model', async () => {
     const name = 'Alex';
-    const handleInput = jest.fn((value) => {
-      console.log(value)
-    });
-    const wrapper = mount(FyInput, {
+    const onInput = jest.fn();
+    const wrapper = shallowMount(FyInput, {
       propsData: {
         value: name
       },
       listeners: {
-        input: handleInput
+        input: onInput
       }
     });
-    expect(wrapper.vm.value).toBe(name);
+    expect(wrapper.find('input[type="text"]').element.value).toBe(name);
+    await wrapper.setValue('daniel');
+    expect(onInput).toBeCalledTimes(1);
+    expect(onInput).toBeCalledWith('daniel');
+  })
 
-    wrapper.find('input').element.value = 'daniel';
-    await wrapper.trigger('input');
+  test('test input form validate', () => {
+    
   })
 })

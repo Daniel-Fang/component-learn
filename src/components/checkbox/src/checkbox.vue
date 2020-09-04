@@ -2,6 +2,7 @@
   <label class="fy-checkbox">
     <span>
       <input 
+<<<<<<< HEAD
         v-if="group" 
         type="checkbox" 
         :disabled="disabled" 
@@ -10,6 +11,8 @@
         @change="onChange">
       <input 
         v-else
+=======
+>>>>>>> dce416e842a2eeccfac7f4eb4a22fdee1e9d41de
         type="checkbox"
         :disabled="disabled"
         :checked="value"
@@ -42,6 +45,7 @@ export default {
       if (this.disabled) return false;
       const checked = e.target.checked;
       this.$emit('input', checked);
+<<<<<<< HEAD
       
       if (this.group) {
         this.parent.onChange(this.model);
@@ -52,19 +56,23 @@ export default {
     },
     updateModel () {
 
+=======
+      // this.$emit('on-change', checked);
+      // this.$emit('fy-form-item', 'on-form-change', checked);
+>>>>>>> dce416e842a2eeccfac7f4eb4a22fdee1e9d41de
     }
   },
   mounted () {
-    this.parent = findComponentUpward(this, 'fy-checkbox-group');
-    if (this.parent) {
-      this.group = true;
-    }
+    // this.parent = findComponentUpward(this, 'fy-checkbox-group');
+    // if (this.parent) {
+    //   this.group = true;
+    // }
 
-    if (this.group) {
-      this.parent.updateModel(true);
-    } else {
-      this.updateModel();
-    }
+    // if (this.group) {
+    //   this.parent.updateModel(true);
+    // } else {
+    //   this.updateModel();
+    // }
   }
 }
 </script>
