@@ -1,18 +1,25 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import FyInput from '@/components/input/index';
+
+jest.useFakeTimers();
 
 describe('FyInput.vue', () => {
   it('it should support v-model binding', async () => {
     const name = 'Alex';
-    const wrapper = shallowMount(FyInput, {
+    const handleInput = jest.fn((value) => {
+      console.log(value)
+    });
+    const wrapper = mount(FyInput, {
       propsData: {
         value: name
+      },
+      listeners: {
+        input: handleInput
       }
     });
-    expect(wrapper.find('input[type="text"]').element.value).toBe(name);
-    await wrapper.trigger('input', {
-      value: 'daniel'
-    });
-    expect(wrapper.find('input[type="text"]').element.value).toBe('daniel');
+    expect(wrapper.vm.value).toBe(name);
+
+    wrapper.find('input').element.value = 'daniel';
+    await wrapper.trigger('input');
   })
 })

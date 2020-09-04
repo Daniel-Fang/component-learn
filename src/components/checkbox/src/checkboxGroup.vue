@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { findComponentDownward } from '@/utils/assist.js';
+import { findComponentsDownward } from '@/utils/assist.js';
 import Emitter from '@/mixins/emitter.js';
 export default {
   name: 'fy-checkbox-group',
@@ -25,8 +25,8 @@ export default {
   },
   methods: {
     updateModel (update) {
-      this.childrens = findComponentDownward(this, 'fy-checkbox');
-      if (this.childrens) {
+      this.childrens = findComponentsDownward(this, 'fy-checkbox'); // 获取所有的fy-checkbox 组件实例
+      if (this.childrens.length) {
         const { value } = this;
         this.childrens.forEach(child => {
           child.model = value;
@@ -44,7 +44,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

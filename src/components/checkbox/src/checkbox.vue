@@ -5,11 +5,11 @@
         v-if="group" 
         type="checkbox" 
         :disabled="disabled" 
-        :value="label" 
+        :value="label"
         v-model="model" 
         @change="onChange">
       <input 
-        v-else 
+        v-else
         type="checkbox"
         :disabled="disabled"
         :checked="value"
@@ -24,7 +24,7 @@ import { findComponentUpward } from '@/utils/assist.js';
 import Emitter from '@/mixins/emitter.js';
 export default {
   name: 'fy-checkbox',
-  mixins: [Emitter],
+  mixins: [ Emitter ],
   props: {
     value: Boolean,
     disabled: Boolean,
@@ -42,8 +42,16 @@ export default {
       if (this.disabled) return false;
       const checked = e.target.checked;
       this.$emit('input', checked);
-      this.$emit('on-change', checked);
-      this.$emit('fy-form-item', 'on-form-change', checked);
+      
+      if (this.group) {
+        this.parent.onChange(this.model);
+      } else {
+        this.$emit('on-change', checked);
+        this.$emit('fy-form-item', 'on-form-change', checked);
+      }
+    },
+    updateModel () {
+
     }
   },
   mounted () {
