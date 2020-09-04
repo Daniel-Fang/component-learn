@@ -10,10 +10,15 @@ describe('form-item', () => {
         form () {
           return FyForm
         }
+      },
+      propsData: {
+        label: '姓名',
+        prop: 'label'
       }
     })
 
     expect(wrapper.vm.$parent.$options.name).toBe('fy-form');
     expect(wrapper.vm.form).toBeInstanceOf(Object);
+    // expect(wrapper.html()).toMatchSnapshot();
   })
 })
