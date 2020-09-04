@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test form test form 1`] = `<div class="fy-form">default slot</div>`;
