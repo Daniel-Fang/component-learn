@@ -1,26 +1,6 @@
 <template>
   <div class="home">
-    <fy-form :model="formModel" :rules="ruleValidate" ref="formRef">
-      <fy-form-item label="用户名" prop="name">
-        <fy-input v-model="formModel.name" placeholder="请输入用户名"></fy-input>
-      </fy-form-item>
-      <fy-form-item label="邮箱" prop="email">
-        <fy-input v-model="formModel.email" placeholder="请输入邮箱"></fy-input>
-      </fy-form-item>
-      <!-- <fy-form-item label="性别" prop="sex">
-        <fy-checkbox v-model="formModel.sex">男</fy-checkbox>
-      </fy-form-item> -->
-      <fy-form-item label="水果" prop="fruit">
-        <fy-checkbox-group v-model="formModel.fruit">
-          <fy-checkbox label="apple">苹果</fy-checkbox>
-          <fy-checkbox label="orange">橘子</fy-checkbox>
-        </fy-checkbox-group>
-      </fy-form-item>
-      <fy-form-item>
-        <button @click="handleSubmit">提交</button>
-        <button @click="handleReset">重置</button>
-      </fy-form-item>
-    </fy-form>
+    This is home page
   </div>
 </template>
 
@@ -98,6 +78,11 @@ export default {
     },
     handleReset () {
       this.$refs.formRef.resetFields();
+    },
+    handleClick () {
+      this.$router.push({
+        name: 'compose'
+      })
     }
   }
 }

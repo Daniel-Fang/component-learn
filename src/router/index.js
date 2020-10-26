@@ -27,7 +27,15 @@ const routes = [
 const router = new VueRouter({
   mode: 'hash',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    return savedPosition || { x: 0, y: 0 };
+  }
+})
+
+router.beforeEach((to, from, next) => {
+  from.meta.savedPosition = { x: 0, y: document.documentElement.scrollTop };
+  next();
 })
 
 export default router;
