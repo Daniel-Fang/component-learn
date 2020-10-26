@@ -52,6 +52,8 @@ export default {
     },
     updateModel () {
 
+      // this.$emit('on-change', checked);
+      // this.$emit('fy-form-item', 'on-form-change', checked);
     }
   },
   mounted () {

@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import FyInput from '@/components/input/index';
 
 jest.useFakeTimers();

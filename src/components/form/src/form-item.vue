@@ -35,7 +35,8 @@ export default {
   },
   computed: {
     fieldValue () {
-      return this.form.model[this.prop];
+      // return this.form.model[this.prop];
+      return '';
     }
   },
   methods: {
@@ -79,8 +80,8 @@ export default {
           this.isRequired = rule.required;
         })
       }
-      this.$on('on-form-change', this.onFieldChange);
-      this.$on('on-form-blur', this.onFieldBlur);
+      // this.$on('on-form-change', this.onFieldChange);
+      // this.$on('on-form-blur', this.onFieldBlur);
     },
     resetField () {
       this.validateState = '';
@@ -90,7 +91,7 @@ export default {
   },
   mounted () {
     if (this.prop) {
-      this.dispatch('fy-form', 'on-form-item-add', this);
+      // this.dispatch('fy-form', 'on-form-item-add', this);
       this.initialValue = this.fieldValue;
       this.setRules();
     }
